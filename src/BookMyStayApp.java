@@ -2,33 +2,25 @@ public class BookMyStayApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Hotel Room Inventory Status\n");
+        System.out.println("Room Search\n");
 
         // Create inventory
         RoomInventory inventory = new RoomInventory();
 
         // Create room objects
-        Room single = new SingleRoom();
+        Room singleRoom = new SingleRoom();
         Room doubleRoom = new DoubleRoom();
-        Room suite = new SuiteRoom();
+        Room suiteRoom = new SuiteRoom();
 
-        System.out.println("Single Room:");
-        single.displayRoomDetails();
-        System.out.println("Available Rooms: " +
-                inventory.getRoomAvailability().get("Single Room"));
+        // Create search service
+        RoomSearchService searchService = new RoomSearchService();
 
-        System.out.println();
-
-        System.out.println("Double Room:");
-        doubleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: " +
-                inventory.getRoomAvailability().get("Double Room"));
-
-        System.out.println();
-
-        System.out.println("Suite Room:");
-        suite.displayRoomDetails();
-        System.out.println("Available Rooms: " +
-                inventory.getRoomAvailability().get("Suite Room"));
+        // Search available rooms
+        searchService.searchAvailableRooms(
+                inventory,
+                singleRoom,
+                doubleRoom,
+                suiteRoom
+        );
     }
 }
